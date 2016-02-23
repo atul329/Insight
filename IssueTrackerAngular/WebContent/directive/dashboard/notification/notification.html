@@ -1,0 +1,53 @@
+
+<div class="panel panel-default notifPanel">
+	<div class="panel-heading notifHeading" style="color:#286090"><i class="fa fa-flag-checkered" style="margin-right: 10px"></i> Notification Panel</div>
+	<!-- .panel-heading -->
+	<div class="panel-body">
+		<div class="panel-group" id="accordion">
+			<uib-accordion close-others="oneAtATime"> <uib-accordion-group
+				ng-repeat="issue in latestIssueList"> <uib-accordion-heading>
+			<div class="row" style="color: #337ab7;">
+				<div class="col-md-9">{{issue.issueName}}</div>
+				<div class="col-md-3 pull-right">
+					<small class="pull-right text-muted"><i
+						class="fa fa-clock-o"></i> {{issue.sysUpdateDate}}</small>
+				</div>
+			</div>
+			</uib-accordion-heading>
+			<div class="row">
+				<div class="col-md-3">
+					<b>Issue Desc: </b>
+				</div>
+				<div class="col-md-9" style="color:#286090;margin-left:-50px;width:82%">
+				     {{issue.issueDesc}}
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-2">
+					<b>Update: </b>
+				</div>
+				<div class="col-md-10" style="color:#286090;">
+				     {{issue.remarks}}
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-6">
+				<label>Reported By:</label>
+				<span style="color:#286090;margin-left: 18px;">{{issue.upssTeam.teamName}}</span>				
+				</div>
+				<div class="col-md-6">
+					<label>Pending With:</label>
+					<span style="color:#286090;margin-left: 18px;">{{issue.pendingWith}}</span>
+				</div>	
+			</div>
+			<div class="row">
+			<div class="col-md-6">
+			<label>Status:</label>
+			<span style="color:#286090;margin-left: 55px;">{{issue.status}}</span>			
+			</div>
+			</div>
+			</uib-accordion-group> </uib-accordion>
+		</div>
+	</div>
+	<!-- .panel-body -->
+</div>

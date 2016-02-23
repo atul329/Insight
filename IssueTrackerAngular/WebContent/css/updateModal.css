@@ -1,0 +1,89 @@
+.update-modal {
+	margin-left: auto;
+	margin-right: auto;
+	max-width: 1024px;
+	padding: 25px 15px 25px 10px;
+	font: 12px Georgia, "Times New Roman", Times, serif;
+	text-shadow: 1px 1px 1px #FFF;
+	margin-bottom: 7px;
+	height: auto;
+}
+
+.update-modal h1 {
+	font-size: 25px;
+	padding: 0px 0px 10px 40px;
+	display: block;
+	border-bottom: 1px solid #E4E4E4;
+	margin: -10px -15px 30px -10px;;
+	color: #888;
+}
+
+.update-modal h1>span {
+	display: block;
+	font-size: 11px;
+}
+
+.update-modal label {
+	display: block;
+	margin: 0px;
+	color: #3D86A8;
+}
+
+.update-modal label>span {
+	float: left;
+	width: 20%;
+	text-align: right;
+	padding-right: 10px;
+	margin-top: 10px;
+	color: #888;
+}
+
+.update-modal input[type="text"],.update-modal textarea,.update-modal select {
+	/* border: 1px solid; */
+	color: #888;
+	outline: 0 none;
+	padding: 3px 3px 3px 5px;
+	font-size: 12px;
+	line-height: 15px;
+	box-shadow: inset 1px 1px 2px 0 #707070;
+	transition: box-shadow 0.3s;
+}
+
+.update-modal textarea {
+	padding: 5px 3px 3px 5px;
+}
+
+.update-modal select {
+	background: #FFF
+		url('http://www.sanwebe.com/wp-content/uploads/2013/10/down-arrow.png')
+		no-repeat right;
+	background: #FFF
+		url('http://www.sanwebe.com/wp-content/uploads/2013/10/down-arrow.png')
+		no-repeat right );
+	appearance: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	text-indent: 0.01px;
+	text-overflow: '';
+	height: 35px;
+	line-height: 25px;
+}
+
+.update-modal textarea {
+	height: 100px;
+}
+
+.update-modal .button {
+	background: #E27575;
+	border: none;
+	padding: 10px 25px 10px 25px;
+	color: #FFF;
+	box-shadow: 1px 1px 5px #B6B6B6;
+	border-radius: 3px;
+	text-shadow: 1px 1px 1px #9E3F3F;
+	cursor: pointer;
+}
+
+.update-modal .button:hover {
+	background: #CF7A7A
+}

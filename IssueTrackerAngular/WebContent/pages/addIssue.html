@@ -1,0 +1,328 @@
+<div id="container">
+<!--     <div class="col-lg-12" style="max-width: 1054px; margin-left: 133px;">
+          <div data-ng-class="{'alert alert-success':flag, 'alert alert-danger': !flag}" data-ng-if="flag">
+               {{message}}
+          </div>
+    </div> -->
+	<div class="col-lg-12">
+		<form class="form-horizontal basic-grey" role="form" name="myForm" data-ng-submit="addIssue(user)"
+			novalidate>
+			<fieldset>
+				<legend style="color: #134169">
+					<i class="fa  fa-plus-circle" style="margin-right:10px"></i> Add Issue
+				</legend>
+				<div class="row">
+					<div class="col-lg-6">
+						<div class="form-group"
+							data-ng-class="{ 'has-error': myForm.logDate.$dirty && myForm.logDate.$error.required }">
+							<label for="logDate" class="col-sm-3 control-label">
+								Logged Date </label>
+							<div class="col-sm-8">
+								<p class="input-group">
+									<input type="text" class="form-control"
+										uib-datepicker-popup="dd-MMM-yyyy"
+										data-ng-model="user.logDate" name="logDate"
+										is-open="popup1.opened" min-date="minDate" max-date="maxDate"
+										init-date="initDate" close-text="Close" required /> <span
+										class="input-group-btn">
+										<button type="button" class="btn btn-default"
+											data-ng-click="open1()">
+											<i class="fa fa-calendar"></i>
+										</button>
+									</span>
+								<div class="help-block" data-ng-messages="myForm.logDate.$error"
+									data-ng-show="myForm.logDate.$touched">
+									<p data-ng-message="required">
+										Ohh <i class="fa fa-exclamation-circle"></i> you missed
+										Something
+									</p>
+								</div>
+								</p>
+							</div>
+						</div>
+						<div class="form-group"
+							data-ng-class="{ 'has-error': myForm.issueName.$touched && myForm.issueName.$invalid }">
+							<label class="col-sm-3 control-label"> Issue </label>
+							<div class="col-sm-8">
+								<input class="form-control" data-ng-model="user.issueName"
+									name="issueName" type="text" data-ng-required="true"
+									placeholder="Issue Name here..">
+								<div class="help-block"
+									data-ng-messages="myForm.issueName.$error"
+									data-ng-show="myForm.issueName.$touched">
+									<p data-ng-message="required">
+										Ohh <i class="fa fa-exclamation-circle"></i> you missed
+										Something
+									</p>
+								</div>
+							</div>
+						</div>
+						<div class="form-group"
+							data-ng-class="{ 'has-error': myForm.issueDescription.$touched && myForm.issueDescription.$invalid }">
+							<label for="issueDescription" class="col-sm-3 control-label">
+								Issue Description </label>
+							<div class="col-sm-8">
+								<textarea style="resize: none" class="form-control" rows="5"
+									name="issueDescription" data-ng-model="user.issueDescription"
+									required></textarea>
+								<div class="help-block"
+									data-ng-messages="myForm.issueDescription.$error"
+									data-ng-show="myForm.issueDescription.$touched">
+									<p data-ng-message="required">
+										Ohh <i class="fa fa-exclamation-circle"></i> you missed
+										Something
+									</p>
+								</div>
+							</div>
+						</div>
+						<div class="form-group"
+							data-ng-class="{ 'has-error': myForm.status.$touched && myForm.status.$invalid }">
+							<label for="status" class="col-sm-3 control-label">
+								Status </label>
+							<div class="col-sm-8">
+								<select name="status" data-ng-model="user.status"
+									class="form-control"
+									data-ng-options="option.name for option in status1 track by option.value"
+									required>
+								</select>
+								<div class="help-block" data-ng-messages="myForm.status.$error"
+									data-ng-show="myForm.status.$touched">
+									<p data-ng-message="required">
+										Ohh <i class="fa fa-exclamation-circle"></i> you missed
+										Something
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-6">
+						<div class="form-group"
+							data-ng-class="{ 'has-error': myForm.reportedBy.$touched && myForm.reportedBy.$invalid }">
+							<label for="reportedBy" class="col-sm-3 control-label">
+								Reported By </label>
+							<div class="col-sm-8">
+								<select data-ng-model="user.reportedBy" name="reportedBy"
+									class="form-control"
+									data-ng-options="option.name for option in reportedBy1 track by option.value"
+									required>
+								</select>
+								<div class="help-block"
+									data-ng-messages="myForm.reportedBy.$error"
+									data-ng-show="myForm.reportedBy.$touched">
+									<p data-ng-message="required">
+										Ohh <i class="fa fa-exclamation-circle"></i> you missed
+										Something
+									</p>
+								</div>
+							</div>
+						</div>
+						<div class="form-group"
+							data-ng-class="{ 'has-error': myForm.pendingWith.$touched && myForm.pendingWith.$invalid }">
+							<label class="col-sm-3 control-label" for="pendingWith">
+								Pending With </label>
+							<div class="col-sm-8">
+								<input type="text" class="form-control"
+									data-ng-model="user.pendingWith" name="pendingWith"
+									placeholder="Currently Issue assigned to.." autocomplete="on"
+									required>
+								<div class="help-block"
+									data-ng-messages="myForm.pendingWith.$error"
+									data-ng-show="myForm.pendingWith.$touched">
+									<p data-ng-message="required">
+										Ohh <i class="fa fa-exclamation-circle"></i> you missed
+										Something
+									</p>
+								</div>
+							</div>
+						</div>
+						<div class="form-group"
+							data-ng-class="{ 'has-error': myForm.remarks.$touched && myForm.remarks.$invalid }">
+							<label class="col-sm-3 control-label" for="remarks">
+								Remarks </label>
+							<div class="col-sm-8">
+								<textarea style="resize: none" class="form-control" rows="5"
+									data-ng-model="user.remarks" name="remarks" required></textarea>
+								<div class="help-block" data-ng-messages="myForm.remarks.$error"
+									data-ng-show="myForm.remarks.$touched">
+									<p data-ng-message="required">
+										Ohh <i class="fa fa-exclamation-circle"></i> you missed
+										Something
+									</p>
+								</div>
+							</div>
+						</div>
+						<div class="form-group"
+							data-ng-class="{ 'has-error': myForm.defectId.$touched && myForm.defectId.$invalid }">
+							<label class="col-sm-3 control-label" for=""> Defect Id </label>
+							<div class="col-sm-8">
+								<input type="text" class="form-control"
+									data-ng-model="user.defectId" name="defectId"
+									placeholder="Mention 'To Be Logged' if NA" autocomplete="on"
+									required>
+								<div class="help-block"
+									data-ng-messages="myForm.defectId.$error"
+									data-ng-show="myForm.defectId.$touched">
+									<p data-ng-message="required">
+										Ohh <i class="fa fa-exclamation-circle"></i> you missed
+										Something
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-12" style="margin-left: -42px;">
+						<div class="form-group"
+							data-ng-class="{ 'has-error': myForm.tracker.$touched && myForm.tracker.$invalid }">
+							<label for="tracker" class="col-sm-2 control-label">
+								Tracker </label>
+							<div class="col-sm-10">
+								<select data-ng-model="user.tracker" name="tracker"
+									class="form-control"
+									data-ng-options="option.name for option in tracker track by option.value"
+									required>
+								</select>
+								<div class="help-block" data-ng-messages="myForm.tracker.$error"
+									data-ng-show="myForm.tracker.$touched">
+									<p data-ng-message="required">
+										Ohh <i class="fa fa-exclamation-circle"></i> you missed
+										Something
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row" data-ng-if="user.tracker.value == '2'">
+				<div class="col-lg-6">
+				      <div class="form-group"
+							data-ng-class="{ 'has-error': myForm.priority.$touched && myForm.priority.$invalid }">
+							<label class="col-sm-3 control-label" for=""> Priority </label>
+							<div class="col-sm-8">
+								<select data-ng-model="user.priority" name="priority"
+									class="form-control"
+									data-ng-options="option.name for option in priority track by option.value"
+									required>
+								</select>
+								<div class="help-block"
+									data-ng-messages="myForm.priority.$error"
+									data-ng-show="myForm.priority.$touched">
+									<p data-ng-message="required">
+										Ohh <i class="fa fa-exclamation-circle"></i> you missed
+										Something
+									</p>
+								</div>
+							</div>
+						</div>
+						<div class="form-group"
+							data-ng-class="{ 'has-error': myForm.frequency.$touched && myForm.frequency.$invalid }">
+							<label class="col-sm-3 control-label" for=""> Frequency </label>
+							<div class="col-sm-8">
+								<input type="text" class="form-control"
+									data-ng-model="user.frequency" name="frequency"
+									placeholder="Mention Frequency of Run"
+									required>
+								<div class="help-block"
+									data-ng-messages="myForm.frequency.$error"
+									data-ng-show="myForm.frequency.$touched">
+									<p data-ng-message="required">
+										Ohh <i class="fa fa-exclamation-circle"></i> you missed
+										Something
+									</p>
+								</div>
+							</div>
+						</div>
+						<div class="form-group"
+							data-ng-class="{ 'has-error': myForm.ticket.$touched && myForm.ticket.$invalid }">
+							<label class="col-sm-3 control-label" for=""> Ticket </label>
+							<div class="col-sm-8">
+								<input type="text" class="form-control"
+									data-ng-model="user.ticket" name="ticket"
+									placeholder="No of tickets per day or week or month"
+									required>
+								<div class="help-block"
+									data-ng-messages="myForm.ticket.$error"
+									data-ng-show="myForm.ticket.$touched">
+									<p data-ng-message="required">
+										Ohh <i class="fa fa-exclamation-circle"></i> you missed
+										Something
+									</p>
+								</div>
+							</div>
+						</div>
+				</div>
+				<div class="col-lg-6">
+				      <div class="form-group"
+							data-ng-class="{ 'has-error': myForm.deployed.$touched && myForm.deployed.$invalid }">
+							<label class="col-sm-3 control-label" for=""> Deployed </label>
+							<div class="col-sm-8">
+								<input type="text" class="form-control"
+									data-ng-model="user.deployed" name="deployed"
+									placeholder="Mention zone or circle" autocomplete="on"
+									required>
+								<div class="help-block"
+									data-ng-messages="myForm.deployed.$error"
+									data-ng-show="myForm.deployed.$touched">
+									<p data-ng-message="required">
+										Ohh <i class="fa fa-exclamation-circle"></i> you missed
+										Something
+									</p>
+								</div>
+							</div>
+						</div>
+						<div class="form-group"
+							data-ng-class="{ 'has-error': myForm.occurrence.$touched && myForm.occurrence.$invalid }">
+							<label class="col-sm-3 control-label" for=""> Approx Count </label>
+							<div class="col-sm-8">
+								<input type="text" class="form-control"
+									data-ng-model="user.occurrence" name="occurrence"
+									placeholder="Records Count" autocomplete="on"
+									required>
+								<div class="help-block"
+									data-ng-messages="myForm.occurrence.$error"
+									data-ng-show="myForm.occurrence.$touched">
+									<p data-ng-message="required">
+										Ohh <i class="fa fa-exclamation-circle"></i> you missed
+										Something
+									</p>
+								</div>
+							</div>
+						</div>
+						<div class="form-group"
+							data-ng-class="{ 'has-error': myForm.efforts.$touched && myForm.efforts.$invalid }">
+							<label class="col-sm-3 control-label" for=""> Efforts </label>
+							<div class="col-sm-8">
+								<input type="text" class="form-control"
+									data-ng-model="user.efforts" name="efforts"
+									placeholder="Mention PD required" autocomplete="on"
+									required>
+								<div class="help-block"
+									data-ng-messages="myForm.efforts.$error"
+									data-ng-show="myForm.efforts.$touched">
+									<p data-ng-message="required">
+										Ohh <i class="fa fa-exclamation-circle"></i> you missed
+										Something
+									</p>
+								</div>
+							</div>
+						</div>
+				</div>
+				</div>
+				<div class="form-actions">
+				<button data-ng-disabled="myForm.$invalid"
+					type="submit" class="btn btn-danger pull-right" style="margin-right: 42px;" id="submit" name="submit">
+					<i class="fa fa-legal" style="margin-right: 5px;"></i> Log Issue
+				</button>
+				</div>
+			</fieldset>
+		</form>
+		<br> <br>
+	</div>
+</div>
+<script type="text/ng-template" id="templateId" >
+    <p>{{message}}</p>
+    <div>
+        <div class="ngdialog-buttons">
+            <button type="button" class="ngdialog-button ngdialog-button-primary" ng-click="closeThisDialog('Cancel')">OK</button>
+        </div>
+    </div>
+</script>

@@ -1,0 +1,69 @@
+<div class="col-md-12">
+	<div class="panel panel-default">
+		<div class="panel-heading" style="font-weight:bold;color: #286090;">Filter Data</div>
+		<div class="panel-body">
+			<div class="row filterForm">
+				<div class="col-md-4">
+					<div class="form-group"
+						data-ng-class="{ 'has-error': team.$dirty && team.$error.required }">
+						<label for="team" class="col-sm-3 control-label"> Team </label>
+						<div class="col-sm-8">
+							<select data-ng-model="form.team" name="team"
+								class="form-control"
+								data-ng-options="option.name for option in team1 track by option.value">
+							</select>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="form-group">
+						<label for="status" class="col-sm-3 control-label"> Status
+						</label>
+						<div class="col-sm-8">
+							<select data-ng-model="form.status" name="status"
+								class="form-control"
+								data-ng-options="option.name for option in status1 track by option.value">
+							</select>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-1 btn1">
+					<button type="submit"
+						data-ng-click="getfreshData(form.team, form.status)"
+						class="btn btn-warning" id="submit" name="submit"><i class="fa fa-filter"></i> Submit
+					</button>
+				</div>
+				<div class="col-md-2 btn2">
+					<button type="submit"
+					    data-ng-click="exportData(form.team, form.status)"
+						class="btn btn-warning" id="" name=""><i class="fa fa-cloud-download"></i> Export to Excel</button>
+				</div>
+				<div class="col-md-1 btn3">
+					<button type="submit"
+						class="btn btn-warning" id="" name=""
+						data-ng-click="reFreshData()">
+						<i class="fa fa-refresh"></i> Refresh</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="grid1" data-ui-grid="gridOptions" class="myGrid"
+		data-ui-grid-resize-columns ui-grid-pinning></div>
+</div>
+<script type="text/ng-template" id="templateId" >
+    <p>Opps <i class="fa fa-exclamation-circle"></i> you didn't select the fields</p>
+    <div>
+        <div class="ngdialog-buttons">
+            <button type="button" class="ngdialog-button ngdialog-button-primary" ng-click="closeThisDialog('Cancel')">OK</button>
+        </div>
+    </div>
+</script>
+<script type="text/ng-template" id="updateResponse" >
+    <p>{{message}}</p>
+    <div>
+        <div class="ngdialog-buttons">
+            <button type="button" class="ngdialog-button ngdialog-button-primary" ng-click="closeThisDialog('Cancel')">OK</button>
+        </div>
+    </div>
+</script>
+

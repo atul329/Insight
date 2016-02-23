@@ -1,0 +1,57 @@
+<div id="container" data-ng-controller="mainController">
+
+	<header></header>
+
+	<div class="col-md-12">
+		<div id="page-wrapper" style="margin-top: 120px;">
+			<div ui-view></div>
+		</div>
+	</div>
+	<!-- /#page-wrapper -->
+</div>
+<script type="text/ng-template" id="ngTemplate/infoPopup.html">
+	<div class="modal-header" style="font-family: calibri;font-size:15px;">
+    <div class="row">
+	<div class="col-md-12">
+				<div class="col-md-2">
+					<b style="margin-left: -16px;">Issue Name: </b>
+				</div>
+				<div class="col-md-9" style="color:#286090;margin-left:-70px;width:82%">
+				     {{selectedRow.issueName}}
+				</div>
+	</div>
+	</div>
+    <div class="row">
+	<div class="col-md-12">
+				<div class="col-md-2">
+					<b style="margin-left: -16px;">Issue Desc: </b>
+				</div>
+				<div class="col-md-9" style="color:#286090;margin-left:-70px;width:82%">
+				     {{selectedRow.issueDesc}}
+				</div>
+	</div>
+	</div>
+	</div>
+	<div class="modal-body">
+    <table class="table table-bordered table-hover" id="modalTable"
+			style="font: 12px Arial, Helvetica, sans-serif; text-shadow: 1px 1px 1px #FFF;">
+			<thead>
+				<tr>
+					<th>Date</th>
+					<th>Remarks</th>
+					<th>Pending With</th>
+					<th>Updated By</th>
+				</tr>
+				<tr data-ng-repeat="a in issueDetailList">
+					<td>{{ a.sysUpdateDate}}</td>
+					<td uib-tooltip="{{a.remarks}}" tooltip-append-to-body="true">{{ a.remarks}}</td>
+					<td>{{ a.pendingWith}}</td>
+					<td>{{ a.login.empName}}</td>
+				</tr>
+			</thead>
+		</table>
+	</div>
+	<div class="modal-footer">
+	    <button class="btn btn-primary btnCustom" ng-click="ok()">OK</button>
+	</div>
+</script>
