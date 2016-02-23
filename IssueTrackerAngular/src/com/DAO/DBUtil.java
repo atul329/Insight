@@ -9,10 +9,10 @@ import java.sql.SQLException;
 public class DBUtil {
 
 	
-	private static String URL = "jdbc:oracle:thin:@(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.40.98.19)(PORT=1532))(ADDRESS=(PROTOCOL=TCP)(HOST=10.40.98.20)(PORT=1532))(ADDRESS=(PROTOCOL=TCP)(HOST=10.40.98.21)(PORT=1532))(LOAD_BALANCE=yes)(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME=UPSZ1SUB)))";
+	private static String URL = "";
 	private static String DRIVER_NAME = "oracle.jdbc.OracleDriver";
-	private static String USERNAME = "SUBSCRIBER_ADMIN_RO";
-	private static String PASSWORD = "sub_ro_32399";
+	private static String USERNAME = "";
+	private static String PASSWORD = "";
 	
 	public static Connection getConnection() {
 		Connection con = null;
